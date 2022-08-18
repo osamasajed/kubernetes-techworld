@@ -11,7 +11,10 @@
         <p><span style="margin-right: 20px;"><strong>Expected Behavior:</strong></span>Pods Created</p>
         <p><span style="margin-right: 20px;"><strong>Resulting Behavior:</strong></span>Failed to pull image "mongo:4.4-rc-focal": rpc error: code = Unknown desc = context deadline exceeded</p>
         <br/>
-        <h2><strong>Solution</strong></h2>
+        <h2><strong>Solution That Worked</strong></h2>
+        <br/>
+        <p>Connecting to a faster internet. This way the image gets downloaded within the timeout.</p>
+        <h2><strong>Other Solutions</strong></h2>
         <br>
         <p>There are 3 solutions as mentioned in <a href="https://stackoverflow.com/questions/72989275/failed-to-pull-image">this article</a>:</p>
         <ul>
@@ -26,14 +29,15 @@
             <em style="margin-left: 20px">minikube start --driver=docker --extra-config=kubelet.runtime-request-timeout=10m</em><br/>
             <strong>Note: </strong> This did not work for me
             </li>
-        </ul><br/>
+        </ul>
+        <br/>
         <p><strong>Note: </strong> I did find <a href="https://groups.google.com/g/kubernetes-sig-storage-bugs/c/3KHBY7zF6z0#:~:text=you%20set%20the-,%2D%2Dimage%2Dpull%2Dprogress%2Ddeadline,-on%20the%20kubelet">another article</a> which tells us to set the --image-pull-progress-deadline flag on kubelet in the Daemon Arguments, <a href="https://support.huaweicloud.com/intl/en-us/cce_faq/cce_faq_00015.html#cce_faq_00015__section1962218412226:~:text=end%20of%20the-,DAEMON_ARGS,-parameter.%2030m">as shown here</a>. However, I could not find this flag</p>
     </div>
 </section>
 <br/>
 
 <section>
-    <h2><strong>2. Pod stuck in crash loop</strong></h2>
+    <h2><strong>2. Pod crash loop after applying secret</strong></h2>
     <br/>
     <div style="width: 90%; margin: 0 auto;">
         <p>When applying the mongo.yaml file, it keeps getting stuck in a crash loop. This seems to only happen when using valueFrom tag to get data from secret file. When I give value directly it does not happen.</p>
@@ -43,7 +47,11 @@
         <br/>
         <h2><strong>Solution</strong></h2>
         <br>
-        <p>I got it to work by giving values directly <strong>(Not Recommended)</strong> <p>
+        <p>The values put in secret file need to be base 64 encoded. I was creating them using<br/>
+        <em style="margin-left: 20px">echo "username" | base64</em><br/>
+        But there is an issue with this, which is pointed out in the tutorial as well, '-n' flag needs to be added as well. This would be:<br/>
+        <em style="margin-left: 20px">echo -n "username" | base64</em><br/>
+        <p>
     </div>
 </section>
 <br/>
