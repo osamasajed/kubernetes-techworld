@@ -1,0 +1,18 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - mongodb-namespace.yaml
+  - mongodb-deployment-secret.yaml
+  - mongodb-service.yaml
+  - mongodb-deployment.yaml
+  - mongo-express-namespace.yaml
+  - mongo-express-secret.yaml
+  - mongo-express-service.yaml
+  - mongo-express-deployment.yaml
+  - mongo-express-configmap.yaml
+  - mongo-express-internal-service.yaml
+  - mongo-express-ingress.yaml
+  - mongo-express-secret-tls.yaml
+  - dashboard-ingress.yaml
+  - dashboard-secret-tls.yaml

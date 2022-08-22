@@ -55,3 +55,19 @@
     </div>
 </section>
 <br/>
+
+<section>
+    <h2><strong>3. Making certificates for https</strong></h2>
+    <br/>
+    <p>Getting actual certificates via kubernetes certificates API is a tedious and long process. So I need a shortcut</p>
+    <div style="width: 90%; margin: 0 auto;">
+        <h2><strong>Solution</strong></h2>
+        <br>
+        <p>Use this command(<a href="https://kubernetes.github.io/ingress-nginx/user-guide/tls/">source</a>) to generate private key and self-signed certificate:<br/>
+        <em style="margin-left: 20px">openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout ${KEY_FILE} -out ${CERT_FILE} -subj "/CN=${HOST}/O=${HOST}"</em><br/>
+        Now you can add them to your tls secrets file<br/>
+        <p>
+        <p><strong>Note: </strong> Since we are using slef-signed certs, it will showup as Nott Secure on browsers. </p>
+    </div>
+</section>
+<br/>

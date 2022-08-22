@@ -5,3 +5,8 @@ metadata:
   namespace: mongo-express
 spec:
   selector:
+    app: mongo-express
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8081
