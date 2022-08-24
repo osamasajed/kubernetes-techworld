@@ -18,6 +18,9 @@ spec:
       containers:
       - name: mongodb
         image: mongo:latest
+        volumeMounts:
+        - mountPath: "/data/db"
+          name: mongodb-data
         ports:
         - containerPort: 27017
         env:
@@ -31,3 +34,7 @@ spec:
             secretKeyRef:
               name: mongodb-secret
               key: mongo-root-password
+      volumes:
+      - name: mongodb-data
+        persistentVolumeClaim:
+          claimName: mongodb-pvc

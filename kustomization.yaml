@@ -6,6 +6,8 @@ resources:
   - mongodb-deployment-secret.yaml
   - mongodb-service.yaml
   - mongodb-deployment.yaml
+  - mongodb-pv.yaml
+  - mongodb-pvc.yaml
   - mongo-express-namespace.yaml
   - mongo-express-secret.yaml
   - mongo-express-service.yaml

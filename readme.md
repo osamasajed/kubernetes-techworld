@@ -59,8 +59,8 @@
 <section>
     <h2><strong>3. Making certificates for https</strong></h2>
     <br/>
-    <p>Getting actual certificates via kubernetes certificates API is a tedious and long process. So I need a shortcut</p>
     <div style="width: 90%; margin: 0 auto;">
+        <p>Getting actual certificates via kubernetes certificates API is a tedious and long process. So I need a shortcut</p>
         <h2><strong>Solution</strong></h2>
         <br>
         <p>Use this command(<a href="https://kubernetes.github.io/ingress-nginx/user-guide/tls/">source</a>) to generate private key and self-signed certificate:<br/>
@@ -68,6 +68,21 @@
         Now you can add them to your tls secrets file<br/>
         <p>
         <p><strong>Note: </strong> Since we are using slef-signed certs, it will showup as Nott Secure on browsers. </p>
+    </div>
+</section>
+<br/>
+
+<section>
+    <h2><strong>4. Attaching PV to Mongo DB</strong></h2>
+    <br/>
+    <div style="width: 90%; margin: 0 auto;">
+        <p>I have made the pv.yaml and pvc.yaml files and also made relevent changes to my deployment.yaml file, but data does no persist.</p>
+        <p><span style="margin-right: 20px;"><strong>Expected Behavior:</strong></span>Data should persist even after minikube restarts</p>
+        <p><span style="margin-right: 20px;"><strong>Resulting Behavior:</strong></span>DB changes are lost</p>
+        <br/>
+        <h2><strong>Solution</strong></h2>
+        <br>
+        <p></p>
     </div>
 </section>
 <br/>
