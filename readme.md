@@ -82,7 +82,7 @@
         <br/>
         <h2><strong>Solution</strong></h2>
         <br>
-        <p></p>
+        <p>While a Persistent Volume can not be part of any namespaces, the Persistent Volume Claim <strong>Must</strong> be part of the <strong>same</strong> namespace as the resourse trying to access it.</p>
     </div>
 </section>
 <br/>
